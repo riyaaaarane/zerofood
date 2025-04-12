@@ -1,0 +1,21 @@
+import { Link } from "react-router-dom";
+import "../AppStyle.css";
+
+const Navbar = () => (
+  <div className="nav-bar-container-light">
+    <Link to="/">
+      <img
+        src="https://cdn-icons-png.freepik.com/256/14355/14355157.png?semt=ais_hybrid"
+        className="website-logo"
+        alt="website logo"
+      />
+    </Link>
+    <ul className="middle-items">
+      <li className="list-item">
+        <Link to="/" className="link-light">Home</Link>
+      </li>
+    </ul>
+  </div>
+);
+
+export default Navbar;
