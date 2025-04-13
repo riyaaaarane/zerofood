@@ -5,9 +5,9 @@ const FoodListing = require("../models/FoodListing"); // adjust path if needed
 // POST /api/food
 router.post("/food", async (req, res) => {
   try {
-    const { title, description, type, quantity, location, expiresIn } = req.body;
+    const { title, description, type, quantity, location, expiresIn, contactEmail } = req.body;
 
-    if (!title || !description || !type || !quantity || !location || !expiresIn) {
+    if (!title || !description || !type || !quantity || !location || !expiresIn ||!contactEmail) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
@@ -18,6 +18,7 @@ router.post("/food", async (req, res) => {
       quantity,
       location,
       expiresIn,
+      contactEmail,
     });
 
     await newListing.save();
