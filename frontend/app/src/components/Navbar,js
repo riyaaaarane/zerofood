@@ -1,21 +1,56 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "../AppStyle.css";
 
-const Navbar = () => (
-  <div className="nav-bar-container-light">
-    <Link to="/">
-      <img
-        src="https://cdn-icons-png.freepik.com/256/14355/14355157.png?semt=ais_hybrid"
-        className="website-logo"
-        alt="website logo"
-      />
-    </Link>
-    <ul className="middle-items">
-      <li className="list-item">
-        <Link to="/" className="link-light">Home</Link>
-      </li>
-    </ul>
-  </div>
-);
+const Navbar = () => {
+  const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user && user.name) {
+      setUserName(user.name);
+    } else {
+      setUserName("");
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUserName("");
+    navigate("/login");
+  };
+
+  return (
+    <div className="nav-bar-container-light">
+      <Link to="/">
+        <img
+          src="https://cdn-icons-png.freepik.com/256/14355/14355157.png?semt=ais_hybrid"
+          className="website-logo"
+          alt="website logo"
+        />
+      </Link>
+
+      <ul className="middle-items">
+        <li className="list-item">
+          <Link to="/" className="nav-button">
+            Home
+          </Link>
+        </li>
+      </ul>
+
+      {userName && (
+        <div className="nav-left">
+          Welcome, {userName}
+          <button onClick={handleLogout} className="nav-button">
+            Logout
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Navbar;
+
