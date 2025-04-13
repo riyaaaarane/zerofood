@@ -7,7 +7,8 @@ const foodListingSchema = new mongoose.Schema({
   quantity: { type: Number, required: true },
   location: { type: String, required: true },
   expiresIn: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  contactEmail: { type: String, required: true}
 });
 
 module.exports = mongoose.model("FoodListing", foodListingSchema);
