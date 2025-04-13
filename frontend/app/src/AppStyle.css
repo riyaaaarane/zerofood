@@ -4,7 +4,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Navbar */
+/* Navbar container */
 .nav-bar-container-light {
   display: flex;
   justify-content: space-between;
@@ -13,12 +13,68 @@ body {
   padding: 10px 20px;
   height: 60px;
   border-bottom: 2px solid #dcdcdc;
+  position: relative;
 }
 
+/* Left section */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px; /* Add some space to the left */
+}
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #171f46;
+}
+
+/* Logo */
 .website-logo {
   width: 50px;
   height: 50px;
 }
+
+.nav-button {
+  font-size: 18px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  color: #171f46;
+  text-transform: uppercase;
+  transition: color 0.4s ease;
+  text-decoration: none;
+}
+
+.nav-button:hover {
+  color: #000;
+}
+
+.nav-button::after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.4s, left 0.4s;
+}
+
+.nav-button:hover::after {
+  width: 100%;
+  left: 0%;
+}
+
 
 .middle-items {
   list-style: none;
@@ -113,9 +169,6 @@ body {
   margin: 0 auto; /* Ensures horizontal centering */
 }
 
-
-
-
 .auth-container h2 {
   margin-bottom: 24px;
   color: #2e7d32;
@@ -148,17 +201,6 @@ body {
   background-color: #59e660;
 }
 
-.auth-toggle {
-  margin-top: 16px;
-  font-size: 14px;
-  color: #555;
-}
-
-.auth-toggle span {
-  color: #1b611e;
-  font-weight: bold;
-  cursor: pointer;
-}
 
 /* Styling for Donate Page */
 .donate-container {
@@ -251,6 +293,22 @@ body {
   background: #f9f9f9;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+.listing-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.search-bar {
+  padding: 8px 12px;
+  margin: 10px 0 20px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+
 
 .listing-card h3 {
   margin-bottom: 0.5rem;
